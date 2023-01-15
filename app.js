@@ -16,6 +16,8 @@ app.post("/", function(req, res) {
     const firstName = req.body.fName;
     const lastName = req.body.lName;
     const email = req.body.email;
+    const phNo = req.body.mobile;
+    const birthDay = req.body.bday;
     
     const data = {
         members: [
@@ -24,7 +26,9 @@ app.post("/", function(req, res) {
                 status: "subscribed",
                 merge_fields: {
                     FNAME: firstName,
-                    LNAME: lastName 
+                    LNAME: lastName, 
+                    PHONE: phNo,
+                    BIRTHDAY: birthDay
                 } 
             }
         ]
@@ -61,6 +65,6 @@ app.post("/failure", function(req, res) {
     res.redirect("/");
 })
 
-app.listen(process.env.PORT||3000, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log("Server is running on port 3000");
 });
